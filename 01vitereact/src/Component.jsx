@@ -17,8 +17,10 @@ function Component1() {
 
     return (
       <>
-        <h2>Counter</h2>
-        <span>value: {counter}</span>
+        <h2 className="counter">Counter</h2>
+        <span style={{ color: "blue", fontSize: "42px", marginTop: "10px" }}>
+          value: {counter}
+        </span>
 
         <button onClick={AddCount}>Increase count</button>
         <button onClick={SubCount}>Decrease count</button>
