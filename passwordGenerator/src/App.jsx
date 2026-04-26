@@ -1,13 +1,14 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // import "./App.css";
 
 function App() {
-  const [length, setLength] = useState(0);
+  const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false)
   const [charALlowed, setCharAllowed] = useState(false)
   const [password, setPassword] = useState("")
 
+  const passwordRef =useRef(null)
   const passwordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghijklmnopqurtuvwxyz"
@@ -19,7 +20,16 @@ function App() {
       pass += str[randomIndex]
     }
     setPassword(pass)
-  },[length,numberAllowed, charALlowed,setPassword])
+  }, [length, numberAllowed, charALlowed, setPassword])
+
+  const copyPassword = useCallback(() => {
+    passwordRef.current?.select()
+    window.navigator.clipboard.writeText(password)
+  },[password])
+  
+  useEffect(() => {
+    passwordGenerator()
+  }, [length, numberAllowed, charALlowed, passwordGenerator])
 
   return (
     <>
@@ -33,8 +43,9 @@ function App() {
               placeholder="password"
               value={password}
               readOnly
+              ref={passwordRef}
             />
-            <button className="bg-blue-600 p-2 rounded-r-lg">copy</button>
+            <button onClick={copyPassword} className="bg-blue-600 p-2 rounded-r-lg">copy</button>
           </div>
           <div className="flex gap-2 text-red-600 ">
             <input
@@ -56,7 +67,7 @@ function App() {
             Numbers
             <input type="checkbox"
               defaultChecked={charALlowed}
-              id="cahracterInput"
+              id="characterInput"
               onChange={() => {
                 setCharAllowed((prev) => !prev)
               }}
