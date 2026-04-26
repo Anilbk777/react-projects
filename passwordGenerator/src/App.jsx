@@ -46,9 +46,21 @@ function App() {
               onChange={(e) => {setLength(e.target.value)}}
             />
             <label>length({length})</label>
-            <input type="checkbox" />
+            <input type="checkbox"
+              defaultChecked={numberAllowed}
+              id="numberInput"
+              onChange={() => {
+                setNumberAllowed((prev) => !prev)
+              }}
+            />
             Numbers
-            <input type="checkbox" /> Characters
+            <input type="checkbox"
+              defaultChecked={charALlowed}
+              id="cahracterInput"
+              onChange={() => {
+                setCharAllowed((prev) => !prev)
+              }}
+            /> Characters
           </div>
         </div>
       </div>
