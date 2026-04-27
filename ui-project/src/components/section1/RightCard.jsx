@@ -1,6 +1,6 @@
 import React from "react";
 
-const RightCard = ({idx,img,tag}) => {
+const RightCard = ({idx, color, img,tag}) => {
   return (
     <div className=" relative shrink-0 h-full w-70  rounded-4xl  overflow-hidden">
           <img
@@ -18,10 +18,10 @@ const RightCard = ({idx,img,tag}) => {
             soluta dolor ullam? Earum, illum sed.
           </p>
           <div className="flex justify-between">
-            <button className="bg-blue-600 text-white font-medium py-2 px-6 rounded-full">
+                      <button style={{ backgroundColor:color}} className=" text-white font-medium py-2 px-6 rounded-full">
               {tag}
             </button>
-            <button className="bg-blue-600 text-white font-medium py-2 px-3 rounded-full">
+            <button style={{ backgroundColor:color}} className=" text-white font-medium py-2 px-3 rounded-full">
               <i className="ri-arrow-right-line"></i>
             </button>
           </div>
