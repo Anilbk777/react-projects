@@ -1,26 +1,34 @@
-import React from 'react'
+import React from "react";
 
 const Form = () => {
+
+    function submitHandler(dets) {
+        dets.preventDefault()
+        console.log("form submission prevented!")
+    }
   return (
-    <div className='flex justify-center'>
-      <form className="flex flex-col gap-5 p-10 w-[30vw]">
+    <div className="flex justify-center">
+          <form onSubmit={(event) => {
+              submitHandler(event)
+          }}
+              className="flex flex-col gap-5 p-10 w-[30vw]">
         <input
           type="text"
           placeholder="Enter Notes Heading"
-          className="px-5 py-2  border-2 rounded-2xl"
+          className="px-5 py-2  border-2 rounded-2xl font-medium"
         />
-        <input
+        <textarea
           type="text"
           placeholder="Enter Details"
-          className="px-5 py-2 h-20 border-2 rounded-2xl"
-              />
-              
-              <button className='bg-white text-black px-5 py-2 rounded-2xl font-semibold'>
-                  Add Note
-              </button>
+          className="px-5 py-2 h-20 border-2 rounded-2xl font-medium"
+        />
+
+        <button className="bg-white text-black px-5 py-2 rounded-2xl font-medium">
+          Add Note
+        </button>
       </form>
     </div>
   );
-}
+};
 
-export default Form
+export default Form;
