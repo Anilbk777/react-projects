@@ -27,7 +27,8 @@ const Form = () => {
         }}
         className="flex flex-col gap-5 p-10 w-[30vw]"
       >
-        <input
+              <input
+                  required
           type="text"
           placeholder="Enter Notes Heading"
           className="px-5 py-2  border-2 rounded-2xl font-medium"
@@ -36,7 +37,8 @@ const Form = () => {
             setTitle(e.target.value);
           }}
         />
-        <textarea
+              <textarea
+                  required
           type="text"
           placeholder="Enter Details"
           className="px-5 py-2 h-20 border-2 rounded-2xl font-medium"
@@ -50,7 +52,7 @@ const Form = () => {
           Add Note
         </button>
       </form>
-      {
+      {task &&
         task.map((elem, index) => {
           return <Card key={index} elem={elem} />;
         })}
