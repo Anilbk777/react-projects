@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Component1 from "./Component1"
 import Component2 from "./Component2";
+import Comp3 from "./Comp3";
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
     //   </div>
     // </div>
     <div className="h-screen w-screen bg-black text-white">
-      <Component2/>
+      <Component2 />
+      <Comp3/>
     </div>
   );
 }
