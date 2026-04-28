@@ -1,5 +1,5 @@
 import React from "react";
-
+import Card from "./Card";
 const Form = () => {
 
     function submitHandler(dets) {
@@ -8,10 +8,12 @@ const Form = () => {
     }
   return (
     <div className="flex justify-center">
-          <form onSubmit={(event) => {
-              submitHandler(event)
-          }}
-              className="flex flex-col gap-5 p-10 w-[30vw]">
+      <form
+        onSubmit={(event) => {
+          submitHandler(event);
+        }}
+        className="flex flex-col gap-5 p-10 w-[30vw]"
+      >
         <input
           type="text"
           placeholder="Enter Notes Heading"
@@ -27,6 +29,7 @@ const Form = () => {
           Add Note
         </button>
       </form>
+      <Card />
     </div>
   );
 };
