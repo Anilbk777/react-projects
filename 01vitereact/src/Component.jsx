@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Component1() {
+function Component() {
     let [counter, setCounter] = useState(0)
 
     let AddCount = () => {

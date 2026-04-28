@@ -1,13 +1,12 @@
 import { useState } from "react";
-import Component1 from "./Component"
+import Component1 from "./Component1"
+import Component2 from "./Component2";
 
 function App() {
 
   let [color, setColor] = useState("black")
 
-  const typedValue = (val) => {
-    console.log(val)
-  }
+ 
   return (
     // <div
     //   className="w-full h-screen duration-200"
@@ -39,17 +38,8 @@ function App() {
     //     </div>
     //   </div>
     // </div>
-    <div className="h-screen w-screen">
-      <div>
-        <input
-          onChange={(events)=>{
-          typedValue(events.target.value)
-          }}
-          className="border border-black-800 rounded-md px-4 py-2 focus:outline-none focus:border-blue-800 m-5"
-          type="text"
-          placeholder="Enter Your Name"
-        />
-      </div>
+    <div className="h-screen w-screen bg-black text-white">
+      <Component2/>
     </div>
   );
 }
