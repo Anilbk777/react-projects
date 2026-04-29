@@ -5,7 +5,7 @@ const App = () => {
 
   const getData = async () => {
     const { data } = await axios.get(
-      "https://picsum.photos/v2/list?page=2&limit=30",
+      "https://picsum.photos/v2/list?page=3&limit=15",
     );
     setUserData(data);
     console.log(data);
@@ -13,15 +13,16 @@ const App = () => {
   let printUserData = "No user data available";
   if (userData.length > 0) {
     printUserData = userData.map((elem, id) => (
-      <div>
-        <div className="h-45 w-44 bg-white rounded-1xl">
-          <img
-            key={id}
-            className="h-full object-cover"
-            src={elem.download_url}
-          />
-        </div>
-        <h1 className="text-center">{elem.author}</h1>
+      <div key={id}>
+        <a href={elem.url} target="_blank">
+          <div className="h-45 w-44 bg-white rounded-2xl overflow-hidden">
+            <img
+              className="h-full w-full object-cover"
+              src={elem.download_url}
+            />
+          </div>
+          <h1 className="text-center">{elem.author}</h1>
+        </a>
       </div>
     ));
   }
