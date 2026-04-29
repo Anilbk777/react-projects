@@ -5,7 +5,7 @@ const App = () => {
 
   const getData = async () => {
     const { data } = await axios.get(
-      "https://picsum.photos/v2/list?page=3&limit=15",
+      "https://picsum.photos/v2/list?page=3&limit=20",
     );
     setUserData(data);
   };
@@ -31,8 +31,12 @@ const App = () => {
 
   return (
     <div className="bg-black min-h-screen  p-4 text-white">
+      <div className="flex flex-wrap gap-5 px-10 py-5">{printUserData}</div>
 
-      <div className="flex flex-wrap gap-5">{printUserData}</div>
+      <div className="flex justify-center items-center gap-5">
+        <button className="bg-amber-400 text-black text-sm px-6 py-2 rounded-2xl active:scale-95 transition-all">Prev</button>
+        <button className="bg-amber-400 text-black text-sm px-6 py-2 rounded-2xl active:scale-95 transition-all">Next</button>
+      </div>
     </div>
   );
 };
