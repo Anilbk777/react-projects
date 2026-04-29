@@ -7,10 +7,10 @@ const Api = () => {
       //   const data = await response.json()
       // console.log(data.title)
       
-      const response = await axios(
+      const {data}= await axios(
         "https://jsonplaceholder.typicode.com/todos/1"
       );
-      console.log(response.data)
+      console.log(data)
     }
   return (
     <div>
