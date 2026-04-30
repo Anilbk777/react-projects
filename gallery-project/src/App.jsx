@@ -37,7 +37,6 @@ const App = () => {
 
   return (
     <div className="bg-black min-h-screen  p-4 text-white">
-      <h1 className="text-2xl bg-amber-700 fixed">{index}</h1>
       <div className="flex flex-wrap gap-5 px-10 py-5">{printUserData}</div>
 
       <div className="flex justify-center items-center gap-5">

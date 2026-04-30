@@ -1,13 +1,15 @@
 import { useState } from "react";
-import Component1 from "./Component1"
+import Component1 from "./Component1";
 import Component2 from "./Component2";
 import Comp3 from "./Comp3";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
+  let [color, setColor] = useState("black");
 
-  let [color, setColor] = useState("black")
-
- 
   return (
     // <div
     //   className="w-full h-screen duration-200"
@@ -40,10 +42,15 @@ function App() {
     //   </div>
     // </div>
     <div className="h-screen w-screen bg-black text-white">
-      <Component2 />
-      <Comp3/>
+      {/* <Component2 />
+      <Comp3/> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
+      </Routes>
     </div>
   );
 }
 
-export default App
+export default App;
