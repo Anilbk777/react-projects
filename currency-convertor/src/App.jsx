@@ -1,3 +1,6 @@
+import { InputBox } from "./components";
+import { useCurrencyInfo } from "./hooks/useCurrencyinfo"
+
 function App() {
   return (
     <div className="h-screen bg-black text-white">
