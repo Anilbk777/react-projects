@@ -1,14 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 
 function Login() {
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const formRef = useRef(null);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const buttonClick = () => {
-    formRef.current.requestSubmit();
+    console.log("hello");
+
+    setEmail("");
+    setPassword("");
   };
   return (
     <div className=" h-screen w-full flex flex-col items-center justify-center gap-5 ">
@@ -16,10 +19,8 @@ function Login() {
       <div>
         <div>
           <form
-            ref={formRef}
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
+            id="loginForm"
+            onSubmit={handleSubmit}
             className="flex flex-col gap-5 mb-5"
           >
             <input
@@ -56,7 +57,9 @@ function Login() {
           <div className="text-gray-400">Forget password</div>
         </div>
         <div className=" bg-emerald-600 rounded-full px-4 py-2 w-[20vw] text-center text-xl font-medium hover:bg-emerald-700 active:scale-95">
-          <button onClick={buttonClick}>Log In</button>
+          <button type="submit" form="loginForm">
+            Log In
+          </button>
         </div>
       </div>
     </div>
