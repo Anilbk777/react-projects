@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Login from "./Components/Auth/Login";
 
 const App = () => {
-  return (
-    <div>
-      hello 
-    </div>
-  )
-}
+  return <Login />;
+};
 
-export default App
+export default App;
