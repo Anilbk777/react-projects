@@ -11,13 +11,13 @@ function Login() {
               type="email"
               name="email"
               placeholder="Email"
-              className="border-2 border-amber-800 rounded-2xl px-4 py-2 w-[20vw]"
+              className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl placeholder:text-gray-400"
             />
             <input
               type="password"
               name="password"
               placeholder="Password"
-              className="border-2 border-amber-800 rounded-2xl px-4 py-2 w-[20vw]"
+              className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl placeholder:text-gray-400"
             />
           </form>
         </div>
@@ -30,7 +30,7 @@ function Login() {
           </div>
           <div className="text-gray-400">Forget password</div>
         </div>
-        <div className=" bg-rose-600 rounded-2xl px-4 py-2 w-[20vw] text-center text-xl font-medium">
+        <div className=" bg-emerald-600 rounded-full px-4 py-2 w-[20vw] text-center text-xl font-medium">
           <button>Log In</button>
         </div>
       </div>
