@@ -1,7 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("");
+
   const formRef = useRef(null);
+
+
   const buttonClick = () => {
     formRef.current.requestSubmit();
   };
@@ -19,12 +24,20 @@ function Login() {
           >
             <input
               required
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               type="email"
               name="email"
               placeholder="Email"
               className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl placeholder:text-gray-400"
             />
             <input
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               required
               type="password"
               name="password"
