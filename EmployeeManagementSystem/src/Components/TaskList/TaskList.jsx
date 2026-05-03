@@ -10,10 +10,14 @@ const TaskList = () => {
         <div className="flex justify-between items-center">
           <h3 className="bg-red-600 px-6 py-1 rounded text-sm">High</h3>
           <h4>May 2, 2026</h4>
-              </div>
-              <h2 className="mt-5 text-2xl font-semibold">Make a video on SQL</h2>
-              <p className="text-sm mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatibus, expedita blanditiis itaque ut maiores.</p>
+        </div>
+        <h2 className="mt-5 text-2xl font-semibold">Make a video on SQL</h2>
+        <p className="text-sm mt-2 ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
+          voluptatibus, expedita blanditiis itaque ut maiores.
+        </p>
       </div>
+      
     </div>
   );
 };
