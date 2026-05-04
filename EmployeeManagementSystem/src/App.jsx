@@ -3,28 +3,50 @@ import Login from "./Components/Auth/Login";
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
 import { AuthContext } from "./context/AuthProvider";
+import { setLocalStorage } from "./utils/LocalStorage";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [loggedInData, setLoggedInData] = useState(null);
+
   const authData = useContext(AuthContext);
   console.log(authData?.employees);
 
+  useEffect(() => {
+    if (authData) {
+      const loggedIn = localStorage.getItem("loggedIn");
+
+      if (loggedIn) {
+        const parsed = JSON.parse(loggedIn);
+        setUser(parsed.role);
+        setLoggedInData(parsed.data);
+      }
+    }
+  }, [authData]);
+
   function handleLogIn(email, password) {
-    if (
-      authData &&
-      authData?.employees?.find(
-        (employee) => employee.email == email && employee.password == password,
-      )
-    ) {
-      console.log("This is an employee1");
-      setUser("employee");
-    } else if (
-      authData?.admin?.find(
-        (user) => user.email == email && user.password == password,
-      )
-    ) {
-      console.log("This is an admin");
-      setUser("admin");
+    if (!authData) return;
+
+    const employee = authData.employees.find(
+      (emp) => emp?.email === email && emp?.password == password,
+    );
+
+    const isAdmin = authData?.admin.find(
+      (adm) => adm.email === email && adm.password == password,
+    );
+    // authData?.admin?.email === email && authData?.admin?.password == password;
+    if (employee) {
+      const payload = { role: "employee", data: employee };
+
+      // localStorage.setItem("loggedIn", JSON.stringify(payload));
+      setUser(payload.role);
+      setLoggedInData(payload.data);
+    } else if (isAdmin) {
+      const payload = { role: "admin", data: authData?.admin };
+
+      // localStorage.setItem("loggedIn", JSON.stringify(payload));
+      setUser(payload.role);
+      setLoggedInData(payload.data);
     } else {
       alert("Invalid credentials");
     }
@@ -34,8 +56,8 @@ const App = () => {
     <>
       {!user && <Login handleLogIn={handleLogIn} />}
 
-      {user === "employee" && <EmployeeDashboard />}
-      {user === "admin" && <AdminDashboard />}
+      {user === "employee" && <EmployeeDashboard data={loggedInData} />}
+      {user === "admin" && <AdminDashboard data={loggedInData} />}
     </>
   );
 };
