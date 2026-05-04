@@ -1,72 +1,50 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 function Login({ handleLogIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const formRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogIn(email, password);
-    console.log("heoow from handle submit   ");
+
+    console.log("submitted");
 
     setEmail("");
     setPassword("");
   };
-  const triggerSubmit = () => {
-    formRef.current.requestSubmit(); // modern & clean
-  };
+
   return (
-    <div className=" h-screen w-full flex items-center justify-center  ">
+    <div className="h-screen w-full flex items-center justify-center">
       <div className="border-2 flex flex-col items-center justify-center gap-5 p-7 rounded-2xl border-green-700">
         <h1 className="text-2xl font-bold">Log In</h1>
-        <div>
-          <div>
-            <form
-              ref={formRef}
-              id="loginForm"
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-5 mb-5"
-            >
-              <input
-                required
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl placeholder:text-gray-400"
-              />
-              <input
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                required
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl placeholder:text-gray-400"
-              />
-            </form>
-          </div>
-          <div className="flex gap-12 mb-8">
-            <div className="flex">
-              <input type="checkbox" name="remember" id="remember" />
-              <label htmlFor="remember" className="ml-2">
-                Remember me
-              </label>
-            </div>
-            <div className="text-gray-400">Forget password</div>
-          </div>
-          <div className=" bg-emerald-600 rounded-full px-4 py-2 w-[20vw] text-center text-xl font-medium hover:bg-emerald-700 active:scale-95">
-            <button type="submit" onClick={triggerSubmit}>
-              Log In
-            </button>
-          </div>
-        </div>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 mb-5">
+          <input
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Email"
+            className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl"
+          />
+
+          <input
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Password"
+            className="border-2 outline-none border-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl"
+          />
+
+          <button
+            type="submit"
+            className="bg-emerald-600 rounded-full px-4 py-2 w-[20vw] text-xl font-medium hover:bg-emerald-700 active:scale-95"
+          >
+            Log In
+          </button>
+        </form>
       </div>
     </div>
   );
