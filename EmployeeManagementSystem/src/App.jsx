@@ -25,15 +25,23 @@ const App = () => {
   }, [authData]);
 
   function handleLogIn(email, password) {
-    if (!authData) return;
+    console.log(email, password);
+    console.log("LOGIN FUNCTION TRIGGERED");
+    if (!authData) {
+      console.log("login failed!");
+      return;
+    }
+    console.log("meowww");
 
-    const employee = authData.employees.find(
+    const employee = authData.employees?.find(
       (emp) => emp?.email === email && emp?.password == password,
     );
 
-    const isAdmin = authData?.admin.find(
-      (adm) => adm.email === email && adm.password == password,
+    const admin = authData.admin?.find(
+      (adm) => adm.email === email && adm.password === password,
     );
+    console.log(admin);
+
     // authData?.admin?.email === email && authData?.admin?.password == password;
     if (employee) {
       const payload = { role: "employee", data: employee };
@@ -41,8 +49,8 @@ const App = () => {
       localStorage.setItem("loggedIn", JSON.stringify(payload));
       setUser(payload.role);
       setLoggedInData(payload.data);
-    } else if (isAdmin) {
-      const payload = { role: "admin", data: authData?.admin };
+    } else if (admin) {
+      const payload = { role: "admin", data: admin };
 
       localStorage.setItem("loggedIn", JSON.stringify(payload));
       setUser(payload.role);

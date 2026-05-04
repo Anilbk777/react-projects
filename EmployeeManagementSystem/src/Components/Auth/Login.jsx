@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function Login({ handleLogIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const formRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogIn(email, password);
-
+    console.log("heoow from handle submit   ");
 
     setEmail("");
     setPassword("");
+  };
+  const triggerSubmit = () => {
+    formRef.current.requestSubmit(); // modern & clean
   };
   return (
     <div className=" h-screen w-full flex items-center justify-center  ">
@@ -19,6 +23,7 @@ function Login({ handleLogIn }) {
         <div>
           <div>
             <form
+              ref={formRef}
               id="loginForm"
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 mb-5"
@@ -57,7 +62,7 @@ function Login({ handleLogIn }) {
             <div className="text-gray-400">Forget password</div>
           </div>
           <div className=" bg-emerald-600 rounded-full px-4 py-2 w-[20vw] text-center text-xl font-medium hover:bg-emerald-700 active:scale-95">
-            <button type="submit" form="loginForm">
+            <button type="submit" onClick={triggerSubmit}>
               Log In
             </button>
           </div>
