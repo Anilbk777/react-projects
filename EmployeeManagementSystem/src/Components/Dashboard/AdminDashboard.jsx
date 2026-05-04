@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../Other/Header";
 import CreateTask from "../Other/CreateTask";
 import AllTask from "../Other/AllTask";
-const AdminDashboard = () => {
+const AdminDashboard = ({data}) => {
   return (
     <div className="min-h-screen w-full p-10">
-      <Header />
+      <Header data={data} />
       <CreateTask />
       <AllTask />
     </div>

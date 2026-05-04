@@ -38,13 +38,13 @@ const App = () => {
     if (employee) {
       const payload = { role: "employee", data: employee };
 
-      // localStorage.setItem("loggedIn", JSON.stringify(payload));
+      localStorage.setItem("loggedIn", JSON.stringify(payload));
       setUser(payload.role);
       setLoggedInData(payload.data);
     } else if (isAdmin) {
       const payload = { role: "admin", data: authData?.admin };
 
-      // localStorage.setItem("loggedIn", JSON.stringify(payload));
+      localStorage.setItem("loggedIn", JSON.stringify(payload));
       setUser(payload.role);
       setLoggedInData(payload.data);
     } else {
