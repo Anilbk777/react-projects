@@ -6,27 +6,36 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext);
+  console.log(authData?.employees);
 
   function handleLogIn(email, password) {
-    if (email === "employee1@example.com" && password == "123") {
+    if (
+      authData &&
+      authData?.employees?.find(
+        (employee) => employee.email == email && employee.password == password,
+      )
+    ) {
       console.log("This is an employee1");
       setUser("employee");
-    } else if (email === "admin@example.com" && password == "123") {
+    } else if (
+      authData?.admin?.find(
+        (user) => user.email == email && user.password == password,
+      )
+    ) {
       console.log("This is an admin");
       setUser("admin");
     } else {
       alert("Invalid credentials");
     }
   }
-  const data = useContext(AuthContext);
-  console.log(data);
+
   return (
     <>
-      {!user ? <Login handleLogIn={handleLogIn} /> : ""}
+      {!user && <Login handleLogIn={handleLogIn} />}
 
-      {/* <EmployeeDashboard/> */}
-      {user == "employee" ? <EmployeeDashboard /> : <AdminDashboard />}
-      {/* <AdminDashboard/>  */}
+      {user === "employee" && <EmployeeDashboard />}
+      {user === "admin" && <AdminDashboard />}
     </>
   );
 };
