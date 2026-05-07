@@ -23,7 +23,6 @@ const CreateTask = () => {
     e.preventDefault();
 
     const newTask = {
-    
       taskTitle: formData.taskTitle,
       taskDescription: formData.taskDescription,
       taskDate: formData.taskDate,
@@ -37,9 +36,14 @@ const CreateTask = () => {
     setTasks((prev) => [...prev, newTask]);
     let employees = JSON.parse(localStorage.getItem("employees"));
     console.log("employees from ls:", employees);
+
     employees.forEach((element) => {
-      console.log("->", element);
+      if (element.firstName === formData.assignTo) {
+        element.tasks.push(newTask);
+        console.log(element.tasks);
+      }
     });
+    localStorage.setItem("employees", employees);
 
     // Show updated task immediately
     // console.log("New Task Added:", newTask);
