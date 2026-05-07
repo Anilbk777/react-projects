@@ -9,7 +9,7 @@ const CreateTask = () => {
     category: "",
   });
 
-  const [tasks, setTasks] = useState([]); // renamed for clarity
+  const [tasks, setTasks] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -23,11 +23,10 @@ const CreateTask = () => {
     e.preventDefault();
 
     const newTask = {
-      id: Date.now(), // good to have unique id
+    
       taskTitle: formData.taskTitle,
       taskDescription: formData.taskDescription,
       taskDate: formData.taskDate,
-      assignTo: formData.assignTo,
       category: formData.category,
       active: false,
       newTask: true,
@@ -36,12 +35,16 @@ const CreateTask = () => {
     };
 
     setTasks((prev) => [...prev, newTask]);
+    let employees = JSON.parse(localStorage.getItem("employees"));
+    console.log("employees from ls:", employees);
+    employees.forEach((element) => {
+      console.log("->", element);
+    });
 
     // Show updated task immediately
-    console.log("New Task Added:", newTask);
-    console.log("All Tasks:", [...tasks, newTask]);
+    // console.log("New Task Added:", newTask);
+    // console.log("All Tasks:", [...tasks, newTask]);
 
-    // Reset form
     setFormData({
       taskTitle: "",
       taskDescription: "",
