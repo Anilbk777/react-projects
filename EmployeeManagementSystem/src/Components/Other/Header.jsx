@@ -3,7 +3,7 @@ import React from "react";
 const Header = ({ data }) => {
   const logOutUser = () => {
     localStorage.setItem("loggedIn", "");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
