@@ -1,7 +1,6 @@
 import React from "react";
 
 const NewTask = ({ data }) => {
-  console.log("from new task", data);
   return data.map((elem, idx) => (
     <div
       key={idx}
