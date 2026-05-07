@@ -5,7 +5,6 @@ const Header = ({ data }) => {
     localStorage.setItem("loggedIn", "");
     window.location.reload();
   };
-  console.log(data)
 
   return (
     <div className="flex items-end justify-between">

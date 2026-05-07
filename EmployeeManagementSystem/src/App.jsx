@@ -10,7 +10,7 @@ const App = () => {
   const [loggedInData, setLoggedInData] = useState(null);
 
   const authData = useContext(AuthContext);
-  console.log(authData?.employees);
+
 
   useEffect(() => {
     if (authData) {
@@ -25,8 +25,7 @@ const App = () => {
   }, [authData]);
 
   function handleLogIn(email, password) {
-    console.log(email, password);
-    console.log("LOGIN FUNCTION TRIGGERED");
+
     if (!authData) {
       console.log("login failed!");
       return;
@@ -61,6 +60,7 @@ const App = () => {
   }
 
   return (
+    
     <>
       {!user && <Login handleLogIn={handleLogIn} />}
 

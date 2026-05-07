@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getLocalStorage } from "../utils/LocalStorage";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
@@ -11,9 +11,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <div>
-      <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
-    </div>
+    <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
   );
 };
 

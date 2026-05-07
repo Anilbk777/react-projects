@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
-#tasklist #alltask::-webkit-scrollbar{
-    display: none;
+#alltask::-webkit-scrollbar {
+  display: none;
 }
-
+#tasklist::-webkit-scrollbar {
+  display: none;
+}
 input[type="date"]::-webkit-datetime-edit {
   @apply text-sm text-gray-400;
 }
